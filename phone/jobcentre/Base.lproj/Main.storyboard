@@ -82,7 +82,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="MFh-lx-xlM"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="22"/>
                                         <state key="normal" title="Login">
                                             <color key="titleColor" red="0.83529411760000005" green="0.16078431369999999" blue="0.12549019610000001" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
@@ -99,10 +99,40 @@
                             <constraint firstItem="iHi-Qj-HMD" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="50" id="PZn-s3-dHi"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <segue destination="a8W-dk-phb" kind="show" id="uql-J5-yvt"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="238" y="139"/>
+        </scene>
+        <!--Beacon View Controller-->
+        <scene sceneID="o8y-8a-tmQ">
+            <objects>
+                <viewController id="a8W-dk-phb" customClass="BeaconViewController" customModule="jobcentre" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="TvR-E6-BtH"/>
+                        <viewControllerLayoutGuide type="bottom" id="92w-xS-tLZ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="sHs-aa-5rw">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ReO-aB-Nuo">
+                                <frame key="frameInset" minX="1" minY="19" height="44" maxX="-1"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Account" id="B1K-wn-ajM"/>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IZF-cG-bzi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1020" y="144"/>
         </scene>
     </scenes>
     <resources>
