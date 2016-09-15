@@ -19,9 +19,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="iHi-Qj-HMD">
-                                <frame key="frameInset" minX="87" minY="227" width="200" height="330"/>
+                                <frame key="frameInset" minX="87" minY="227" width="200" height="350"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Job Centre" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ugp-7h-hAf">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ugp-7h-hAf">
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="QKK-LR-nHZ"/>
                                         </constraints>
@@ -30,20 +30,9 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lxf-xC-qg8">
-                                        <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="workspace.png" translatesAutoresizingMaskIntoConstraints="NO" id="Pdf-kX-BbG">
-                                                <frame key="frameInset" minX="-19" minY="-16" width="240" height="128"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="120" id="0TD-3t-glz"/>
-                                                    <constraint firstAttribute="height" constant="120" id="SAN-ec-09C"/>
-                                                </constraints>
-                                            </imageView>
-                                        </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="100" id="Ja6-bN-0JO"/>
-                                            <constraint firstItem="Pdf-kX-BbG" firstAttribute="centerX" secondItem="Lxf-xC-qg8" secondAttribute="centerX" id="LfG-eW-ozd"/>
-                                            <constraint firstItem="Pdf-kX-BbG" firstAttribute="centerY" secondItem="Lxf-xC-qg8" secondAttribute="centerY" id="k7o-Yt-SH8"/>
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zzH-KF-IPJ">
@@ -70,22 +59,26 @@
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LbF-4j-RaS">
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sAC-sO-JZn">
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="10" id="CWt-BS-XYp"/>
+                                            <constraint firstAttribute="height" constant="30" id="CWt-BS-XYp"/>
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3un-ch-26f">
+                                        <color key="backgroundColor" red="0.83529411760000005" green="0.16078431369999999" blue="0.12549019610000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="MFh-lx-xlM"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="22"/>
                                         <state key="normal" title="Login">
-                                            <color key="titleColor" red="0.83529411760000005" green="0.16078431369999999" blue="0.12549019610000001" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="loginWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="XbB-vk-beb"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -100,7 +93,9 @@
                         </constraints>
                     </view>
                     <connections>
-                        <segue destination="a8W-dk-phb" kind="show" id="uql-J5-yvt"/>
+                        <outlet property="password" destination="LbF-4j-RaS" id="rg4-0y-Gah"/>
+                        <outlet property="username" destination="rPv-vi-PID" id="qbc-Ab-SCw"/>
+                        <segue destination="a8W-dk-phb" kind="presentation" identifier="beaconsegue" id="oe8-0U-uXV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -135,7 +130,4 @@
             <point key="canvasLocation" x="1020" y="144"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="workspace.png" width="400" height="400"/>
-    </resources>
 </document>
