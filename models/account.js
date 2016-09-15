@@ -3,6 +3,9 @@
 var mongoose = require('mongoose');
 var bcrypt = require('bcrypt-nodejs');
 
+var Status = require('../models/status');
+
+
 // define the schema for our user model
 var accountSchema = mongoose.Schema({
 
@@ -27,7 +30,8 @@ var accountSchema = mongoose.Schema({
         token: String,
         email: String,
         name: String
-    }
+    },
+    statusHistory: [Status]
 
 });
 

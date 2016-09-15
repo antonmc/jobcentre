@@ -8,7 +8,6 @@
 // for more info, see: http://expressjs.com
 var express = require('express');
 var app = express();
-var port = process.env.PORT || 5014;
 var mongoose = require('mongoose');
 var passport = require('passport');
 var flash = require('connect-flash');
@@ -59,10 +58,10 @@ app.use(session({
     resave: true,
     saveUninitialized: true
 }));
+
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
-
 
 // process the login form
 app.post('/login', passport.authenticate('local-login', {
@@ -114,8 +113,6 @@ app.post('/signup', passport.authenticate('local-signup', {
     failureRedirect: '/signupFailure', // redirect back to the signup page if there is an error
     failureFlash: true // allow flash messages
 }));
-
-
 
 // cfenv provides access to your Cloud Foundry environment
 // for more info, see: https://www.npmjs.com/package/cfenv
