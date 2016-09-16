@@ -22,9 +22,9 @@ class ViewController: UIViewController {
         print(username.text);
         print(password.text);
         
-      // let target = "http://127.0.0.1:6025/login";
+        let target = "http://jobcentre.mybluemix.net/login";
         
-        let target = "http://cloudco.mybluemix.net/login"
+      //  let target = "http://cloudco.mybluemix.net/login"
         
         let url:URL = URL(string: target)!
         let session = URLSession.shared
@@ -43,13 +43,14 @@ class ViewController: UIViewController {
             
             guard let data = data, let _:URLResponse = response  , error == nil else {
                 print("error")
+                print(response)
                 return
             }
             
-            let dataString = NSString(data: data, encoding: String.Encoding.utf8.rawValue)
+            let dataString = String(data: data, encoding: String.Encoding.utf8)
             
             
-            
+            print(dataString)
             
             
         }

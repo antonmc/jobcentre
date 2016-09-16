@@ -23,12 +23,12 @@ class BeaconViewController: UIViewController, ESTTriggerManagerDelegate {
         self.triggerManager.delegate = self
         // add this below:
         let rule1 = ESTProximityRule.inRangeOfNearableIdentifier("46ae7daf83e5e7e9")
-
-        let trigger = ESTTrigger(rules: [rule1], identifier: "tom the trigger")
+        
+        let trigger = ESTTrigger(rules: [rule1], identifier: "jobcenter")
         
         self.triggerManager.startMonitoring(for: trigger)
         
-         self.triggerManager.delegate = self
+        self.triggerManager.delegate = self
         
         // Do any additional setup after loading the view.
     }
@@ -36,10 +36,13 @@ class BeaconViewController: UIViewController, ESTTriggerManagerDelegate {
     
     func triggerManager(_ manager: ESTTriggerManager,
                         triggerChangedState trigger: ESTTrigger) {
-        if (trigger.identifier == "tom the trigger" && trigger.state == true) {
-            print("Hello, digital world! The physical world has spoken.")
+        
+        if (trigger.identifier == "jobcenter" && trigger.state == true) {
+            let alert = UIAlertController(title: "Alert", message: "Message", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
         } else {
-            print("Goodnight. <spoken in the voice of a turret from Portal>")
+            
         }
     }
     
