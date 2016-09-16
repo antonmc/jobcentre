@@ -2,81 +2,266 @@
  * This file provides css styles.
  */
 
-body,html {
-	background-color: #3b4b54; width : 100%;
-	height: 100%;
-	margin: 0 auto;
-	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-	color: #ffffff;
+body,
+html {
+    background-color: #ffffff;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    color: #9896A4;
 }
+
+h2 {
+    font-weight: normal;
+}
+
+.container {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+
+.outline {
+    display: flex;
+    align-content: center;
+    align-self: center;
+    flex-direction: column;
+    width: 800px;
+}
+
+.banner {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background: #79C753;
+    padding: 30px;
+    padding-bottom: 0px;
+    padding-top: 0;
+    margin-top: 40px;
+    border-radius: 4px;
+}
+
+.titleArea {
+    margin-top: 36px;
+    margin-bottom: 36px;
+    flex: 2 0 0;
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    align-items: center;
+}
+
+.logo {}
 
 a {
-	text-decoration: none;
-	color: #00aed1;
+    text-decoration: none;
+    color: #12aaeb;
+    margin-left: 5px;
+    margin-right: 5px;
+    border-bottom: 1px solid #c8e7e0;
+    padding-bottom: 1px;
 }
 
-a:hover {
-	text-decoration: underline;
+.logoImage {
+    height: 46px;
 }
 
-.newappIcon {
-	padding-top: 10%;
-	display: block;
-	margin: 0 auto;
-	padding-bottom: 2em;
-	max-width:200px;
+.name {
+    font-size: 26px;
+    margin-left: 10px;
 }
 
-h1 {
-	font-weight: bold;
-	font-size: 2em;
+.fb {}
+
+.welcome {
+    font-size: 14px;
+    margin: 20px;
+    /* background: #f1f5f8; */
+    padding: 30px;
+    border-radius: 4px;
+    color: #597a96;
+    line-height: 24px;
+    text-align: center;
 }
 
-.leftHalf {
-	float: left;
-	background-color: #26343f;
-	width: 45%;
-	height: 100%;
+.plan {
+    font-size: 12px;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 4px;
+    color: #597a96;
+    border: 1px dashed #597a96;
 }
 
-.rightHalf {
-	float: right;
-	width: 55%;
-	background-color: #313f4a;
-	height: 100%;
-	overflow:auto;
+.home {
+    text-decoration: none;
+    color: #FFFFFF;
+    font-weight: bold;
+    border-bottom: none;
+    padding-bottom: 1px;
 }
 
-.blue {
-	color: #00aed1;
+.layout {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
 }
 
-
-table {
-	table-layout: fixed;
-	width: 800px;
-	margin: 0 auto;
-	word-wrap: break-word;
-	padding-top:10%;
+.welcomeText {
+    font-size: 16px;
+    margin: 20px;
+    background: white;
+    padding: 20px;
+    border-radius: 4px;
+    color: #225282;
+    font-weight: bold;
+    border: 1px solid #c8e7e0;
 }
 
-th {
-	border-bottom: 1px solid #000;
+.benefitkit {
+    display: flex;
+    flex-direction: row;
+    width: 760px;
+    justify-content: center;
 }
 
-th, td {
-	text-align: left;
-	padding: 2px 20px;
+.header {
+    text-align: justify;
+    color: #79C753;
+    margin: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-transform: uppercase;
 }
 
-.env-var {
-	text-align: right;
-	border-right: 1px solid #000;
-	width: 30%;
+.owner {
+    text-align: justify;
+    color: #225282;
+    margin-left: 10px;
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 30px;
 }
 
-pre {
-	padding: 0;
-	margin: 0;
+.claimlist {
+    display: flex;
+    flex-direction: column;
 }
 
+.claimrow {
+    display: flex;
+    flex-direction: row;
+    height: 40px;
+    margin: 10px;
+}
+
+.claimdata {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    text-align: justify;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    min-width: 110px;
+    color: #225282;
+    height: 16px;
+}
+
+.centereddata {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    text-align: center;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    min-width: 80px;
+    color: #79C753;
+    height: 16px;
+}
+
+.financeclaimdata {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    text-align: justify;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    color: #79C753;
+    height: 16px;
+    min-width: 70px;
+    align-items: flex-end;
+}
+
+.category {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    text-align: justify;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    min-width: 110px;
+    color: #79C753;
+    height: 16px;
+    font-weight: bold;
+}
+
+.claimimage {
+    height: 22px;
+    min-width: 30px;
+    margin-right: 20px;
+}
+
+.claimicon {
+    min-width: 66px;
+}
+
+.marker {
+    width: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    margin: 10px;
+    height: 16px;
+}
+
+.bullet {
+    background: #225282;
+    width: 8px;
+    height: 8px;
+    border-radius: 8px;
+}
+
+.claimpayment {
+    min-width: 100px;
+    height: 36px;
+    display: flex;
+    flex-direction: row;
+    font-size: 13px;
+    align-items: center;
+    margin-left: 10px;
+    justify-content: center;
+    color: #225282;
+    font-weight: bold;
+    border: 2px solid #12aaeb;
+}
+
+.claimheader {
+    background: #f1f9ed;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: row;
+    height: 40px;
+    margin: 10px;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+}

@@ -13,6 +13,8 @@ var accountSchema = mongoose.Schema({
     local: {
         email: String,
         password: String,
+        first_name: String,
+        last_name: String
     },
     facebook: {
         id: String,
@@ -32,12 +34,10 @@ var accountSchema = mongoose.Schema({
         email: String,
         name: String
     },
-    firstName: String,
-    surName: String,
-    statusHistory: [Status],
-    evidenceHistory: [Evidence],
-    appointments: [Appointment],
-    visits: [Visit]
+    statusHistory: [Status.schema],
+    evidenceHistory: [Evidence.schema],
+    appointments: [Appointment.schema],
+    visits: [Visit.schema]
 });
 
 // methods ======================

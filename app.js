@@ -15,6 +15,8 @@ var configDB = require('./config/database.js');
 require('./config/passport')(passport);
 
 var Account = require('./models/account');
+var Visit = require('./models/visit');
+
 
 // configuration ===============================================================
 
@@ -65,7 +67,34 @@ app.post('/login', passport.authenticate('local-login', {
 
 
 app.post('/visit', function (req, res) {
-    console.log(req.body);
+
+
+    Account.findOne({
+        'local.email': req.body.email
+    }, function (err, user) {
+
+        if (err) {
+            console.error(err);
+        } else {
+
+            console.log('success');
+
+            console.log(user);
+
+            var v = new Visit();
+            v.date = Date();
+
+            user.visits.push(v);
+
+            user.save(function (err) {
+                if (err) {
+                    throw err;
+                }
+            });
+        }
+    })
+
+    //  console.log(req.body);
 });
 
 app.get('/loginSuccess', function (req, res) {
@@ -74,6 +103,10 @@ app.get('/loginSuccess', function (req, res) {
         username: req.user.local.email,
         firstName: req.user.local.first_name,
         lastName: req.user.local.last_name,
+        visits: req.user.visits,
+        appointments: req.user.appointments,
+        status: req.user.statusHistory,
+        evidence: req.user.evidenceHistory,
         outcome: 'success'
     }, null, 3));
 })
