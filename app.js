@@ -66,8 +66,56 @@ app.post('/login', passport.authenticate('local-login', {
 }));
 
 
-app.post('/visit', function (req, res) {
+app.get('/visits', function (req, res) {
 
+    var monthNames = ["January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December"
+];
+    var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+
+
+
+    Account.find({}, function (err, users) {
+        var userMap = {};
+
+        var visitlog = [];
+
+        users.forEach(function (user) {
+
+            user.visits.forEach(function (visit) {
+
+                var mins = visit.date.getMinutes();
+
+                if (mins < 10) {
+                    mins = '0' + mins;
+                }
+
+                var v = {
+                    firstname: user.local.first_name,
+                    lastname: user.local.last_name,
+                    month: monthNames[visit.date.getMonth()],
+                    year: visit.date.getFullYear(),
+                    day: days[visit.date.getDay()],
+                    time: visit.date.getHours() + ':' + mins
+                }
+
+                visitlog.push(v);
+
+                console.log(visitlog);
+            })
+        });
+
+        var outcome = {
+            visits: visitlog
+        };
+
+        var responseString = JSON.stringify(outcome, null, 3);
+        res.send(responseString);
+
+    })
+})
+
+app.post('/visit', function (req, res) {
 
     Account.findOne({
         'local.email': req.body.email

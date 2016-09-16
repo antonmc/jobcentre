@@ -106,19 +106,19 @@ function get(path, callback) {
 
 function makeHistoryRow(claim) {
 
-    var date = moment(claim.date).format('YYYY-MM-DD');
+    //    var date = moment(claim.date).format('YYYY-MM-DD');
 
     var row = document.createElement('div');
     row.className = 'claimrow';
     row.innerHTML = '<div class="marker">' +
-        '<img class="claimimage" src="images/health/' + claim.icon + '.svg">' +
+        '<img class="claimimage" src="images/clock.svg">' +
         '</div>' +
-        '<div class="claimdata">' + claim.policy + '</div>' +
-        '<div class="claimdata">' + claim.provider + '</div>' +
-        '<div class="centereddata">' + date + '</div>' +
-        '<div class="centereddata">' + claim.outcome + '</div>' +
-        '<div class="financeclaimdata">$' + claim.amount + '</div>' +
-        '<div class="financeclaimdata">$' + claim.payment + '</div>';
+        '<div class="claimdata">' + claim.firstname + '</div>' +
+        '<div class="claimdata">' + claim.lastname + '</div>' +
+        '<div class="centereddata">' + claim.day + '</div>' +
+        '<div class="centereddata">' + claim.month + '</div>' +
+        '<div class="financeclaimdata">' + claim.time + '</div>' +
+        '<div class="financeclaimdata">' + claim.year + '</div>';
 
     return row;
 }
@@ -127,16 +127,16 @@ function getClaims() {
 
     checkStatus();
 
-    get('./history', function (reply) {
+    get('./visits', function (reply) {
         console.log(reply);
 
         var header = document.getElementById('owner');
         owner.innerHTML = reply.owner;
 
-        var claimlist = document.getElementById('claimlist');
+        var visits = document.getElementById('claimlist');
 
-        reply.claims.forEach(function (claim) {
-            var row = makeHistoryRow(claim);
+        reply.visits.reverse().forEach(function (visit) {
+            var row = makeHistoryRow(visit);
             claimlist.appendChild(row);
         });
     })
