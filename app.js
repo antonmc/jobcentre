@@ -1,13 +1,6 @@
-/*eslint-env node*/
-
-//------------------------------------------------------------------------------
-// node.js starter application for Bluemix
-//------------------------------------------------------------------------------
-
-// This application uses express as its web server
-// for more info, see: http://expressjs.com
 var express = require('express');
 var app = express();
+var port = process.env.PORT || 5014;
 var mongoose = require('mongoose');
 var passport = require('passport');
 var flash = require('connect-flash');
@@ -23,27 +16,11 @@ require('./config/passport')(passport);
 
 var Account = require('./models/account');
 
+// configuration ===============================================================
+
 mongoose.connect(configDB.url); // connect to our database
 
-var app = express();
-
 app.use(express.static(__dirname + '/public'));
-
-app.get('/isLoggedIn', function (req, res) {
-    res.setHeader('Content-Type', 'application/json');
-    var result = {
-        outcome: 'failure'
-    };
-
-    if (req.isAuthenticated()) {
-        result.outcome = 'success';
-        result.username = req.user.local.email;
-        result.firstName = req.user.local.firstName;
-        result.lastName = req.user.local.lastName;
-    }
-
-    res.send(JSON.stringify(result, null, 3));
-})
 
 // set up our express application
 app.use(morgan('dev')); // log every request to the console
@@ -54,14 +31,30 @@ app.set('view engine', 'html');
 
 // required for passport
 app.use(session({
-    secret: 'job-centre',
+    secret: 'ana-insurance-bot',
     resave: true,
     saveUninitialized: true
 }));
-
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
+
+var bcrypt = require('bcrypt-nodejs');
+
+// route middleware to make sure a user is logged in
+function isLoggedIn(req, res, next) {
+
+    // if user is authenticated in the session, carry on 
+    if (req.isAuthenticated())
+        return next();
+
+    // if they aren't redirect them to the home page
+    res.redirect('/');
+}
+
+app.get('/login', function (req, res) {
+    res.sendfile('./public/login.html');
+});
 
 // process the login form
 app.post('/login', passport.authenticate('local-login', {
@@ -69,6 +62,11 @@ app.post('/login', passport.authenticate('local-login', {
     failureRedirect: '/loginFailure', // redirect back to the signup page if there is an error
     failureFlash: true // allow flash messages
 }));
+
+
+app.post('/visit', function (req, res) {
+    console.log(req.body);
+});
 
 app.get('/loginSuccess', function (req, res) {
     res.setHeader('Content-Type', 'application/json');
@@ -104,25 +102,48 @@ app.get('/signupFailure', function (req, res) {
     }, null, 3));
 })
 
+app.get('/isLoggedIn', function (req, res) {
+    res.setHeader('Content-Type', 'application/json');
+    var result = {
+        outcome: 'failure'
+    };
+
+    if (req.isAuthenticated()) {
+        result.outcome = 'success';
+        result.username = req.user.local.email;
+        result.firstName = req.user.local.firstName;
+        result.lastName = req.user.local.lastName;
+    }
+
+    res.send(JSON.stringify(result, null, 3));
+})
+
+// =====================================
+// SIGNUP ==============================
+// =====================================
+// show the signup form
+
 app.get('/signup', function (req, res) {
     res.sendfile('./public/signup.html');
 });
 
+// process the signup form
 app.post('/signup', passport.authenticate('local-signup', {
     successRedirect: '/signupSuccess', // redirect to the secure profile section
     failureRedirect: '/signupFailure', // redirect back to the signup page if there is an error
     failureFlash: true // allow flash messages
 }));
 
-// cfenv provides access to your Cloud Foundry environment
-// for more info, see: https://www.npmjs.com/package/cfenv
-var cfenv = require('cfenv');
 
-// get the app environment from Cloud Foundry
-var appEnv = cfenv.getAppEnv();
 
-// start server on the specified port and binding host
-app.listen(appEnv.port, '0.0.0.0', function () {
-    // print a message when the server starts listening
-    console.log("server starting on " + appEnv.url);
+app.get('/logout', function (req, res) {
+    req.logout();
+    res.redirect('/');
 });
+
+app.get('/', function (req, res) {
+    res.render('index.html');
+});
+
+app.listen(port);
+console.log('running on port ' + port);

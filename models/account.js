@@ -4,9 +4,10 @@ var mongoose = require('mongoose');
 var bcrypt = require('bcrypt-nodejs');
 
 var Status = require('../models/status');
+var Visit = require('../models/visit');
+var Evidence = require('../models/evidence');
+var Appointment = require('../models/appointment');
 
-
-// define the schema for our user model
 var accountSchema = mongoose.Schema({
 
     local: {
@@ -31,8 +32,12 @@ var accountSchema = mongoose.Schema({
         email: String,
         name: String
     },
-    statusHistory: [Status]
-
+    firstName: String,
+    surName: String,
+    statusHistory: [Status],
+    evidenceHistory: [Evidence],
+    appointments: [Appointment],
+    visits: [Visit]
 });
 
 // methods ======================
