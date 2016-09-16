@@ -8,14 +8,41 @@
 
 import UIKit
 
-class BeaconViewController: UIViewController {
+class BeaconViewController: UIViewController, ESTTriggerManagerDelegate {
+    
+   let triggerManager = ESTTriggerManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+   /*     var locationManager : CLLocationManager = CLLocationManager()
+        locationManager.delegate = self
+        locationManager.requestAlwaysAuthorization() */
+        
+        
+        self.triggerManager.delegate = self
+        // add this below:
+        let rule1 = ESTProximityRule.inRangeOfNearableIdentifier("46ae7daf83e5e7e9")
+
+        let trigger = ESTTrigger(rules: [rule1], identifier: "tom the trigger")
+        
+        self.triggerManager.startMonitoring(for: trigger)
+        
+         self.triggerManager.delegate = self
+        
         // Do any additional setup after loading the view.
     }
 
+    
+    func triggerManager(_ manager: ESTTriggerManager,
+                        triggerChangedState trigger: ESTTrigger) {
+        if (trigger.identifier == "tom the trigger" && trigger.state == true) {
+            print("Hello, digital world! The physical world has spoken.")
+        } else {
+            print("Goodnight. <spoken in the voice of a turret from Portal>")
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

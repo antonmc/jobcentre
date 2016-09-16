@@ -30,6 +30,7 @@
 		226C6F5A1D8B4CC2000E64FE /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		226C6F5C1D8B4D05000E64FE /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		226C6F5E1D8B540A000E64FE /* EstimoteSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = EstimoteSDK.framework; sourceTree = "<group>"; };
+		226C6F601D8B68D0000E64FE /* ObjCBridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ObjCBridge.h; sourceTree = "<group>"; };
 		22E290BC1D8B00CE005B4FB9 /* jobcentre.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = jobcentre.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22E290BF1D8B00CE005B4FB9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		22E290C11D8B00CE005B4FB9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -79,6 +80,7 @@
 		22E290B31D8B00CE005B4FB9 = {
 			isa = PBXGroup;
 			children = (
+				226C6F601D8B68D0000E64FE /* ObjCBridge.h */,
 				22E290BE1D8B00CE005B4FB9 /* jobcentre */,
 				22E290BD1D8B00CE005B4FB9 /* Products */,
 				226C6F551D8B4CA4000E64FE /* Frameworks */,
@@ -143,6 +145,11 @@
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = PETKK2G752;
 						LastSwiftMigration = 0800;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -310,6 +317,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.ibm.com.jobcentre;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				"SWIFT_OBJC_BRIDGING_HEADER[arch=*]" = "$(PROJECT_DIR)/ObjCBridge.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -329,6 +337,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.ibm.com.jobcentre;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				"SWIFT_OBJC_BRIDGING_HEADER[arch=*]" = "$(PROJECT_DIR)/ObjCBridge.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
