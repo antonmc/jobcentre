@@ -10,6 +10,8 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    
     @IBOutlet var username : UITextField!
     
     @IBOutlet var password: UITextField!
@@ -17,14 +19,10 @@ class ViewController: UIViewController {
     @IBAction func login(sender: UIButton) {
         // do something
         
-        print("clicked the button");
-        
         print(username.text);
         print(password.text);
         
         let target = "http://jobcentre.mybluemix.net/login";
-        
-      //  let target = "http://cloudco.mybluemix.net/login"
         
         let url:URL = URL(string: target)!
         let session = URLSession.shared
@@ -33,7 +31,6 @@ class ViewController: UIViewController {
         request.httpMethod = "POST"
         request.cachePolicy = NSURLRequest.CachePolicy.reloadIgnoringCacheData
 
-        
         let paramString = "email=" + username.text! + "&password=" + password.text!;
         request.httpBody = paramString.data(using: String.Encoding.utf8)
         
@@ -49,18 +46,28 @@ class ViewController: UIViewController {
             
             let dataString = String(data: data, encoding: String.Encoding.utf8)
             
+            let dictionary = self.convertStringToDictionary(text: dataString!)
             
             print(dataString)
             
+            print(dictionary)
             
+            if let fname = dictionary?["firstName"] {
+                self.appDelegate.firstname = fname as! String;
+            }
+            
+            if let lname = dictionary?["lastName"] {
+                self.appDelegate.lastname = lname as! String;
+            }
+            
+            if let uname = dictionary?["username"] {
+                self.appDelegate.username = uname as! String;
+            }
         }
         
-        task.resume()
-        
         self.performSegue(withIdentifier: "beaconsegue", sender: nil)
-
         
-        
+        task.resume()
     }
 
     override func viewDidLoad() {
@@ -68,10 +75,15 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
     }
     
-    
-    func postLogin(){
-        
-        
+    func convertStringToDictionary(text: String) -> [String:AnyObject]? {
+        if let data = text.data(using: String.Encoding.utf8) {
+            do {
+                return try JSONSerialization.jsonObject(with: data, options: []) as? [String:AnyObject]
+            } catch let error as NSError {
+                print(error)
+            }
+        }
+        return nil
     }
 
     override func didReceiveMemoryWarning() {

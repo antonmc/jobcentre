@@ -13,15 +13,14 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    
+    var firstname:String!
+    var lastname:String!
+    var username:String!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
-        
         
         ESTConfig.setupAppID("jobcentre-gpt", andAppToken: "b68edf6704bc0c383f531b3a0c2b19d3")
-
-        
         
         return true
     }
