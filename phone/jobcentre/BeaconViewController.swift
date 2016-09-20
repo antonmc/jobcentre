@@ -69,7 +69,9 @@ class BeaconViewController: UIViewController, ESTTriggerManagerDelegate {
             
             task.resume()
             
-            let alert = UIAlertController(title: "Welcome to Astor Job Centre", message:self.appDelegate.firstname, preferredStyle: UIAlertControllerStyle.actionSheet)
+            var greeting = "Hi " + self.appDelegate.firstname + "! Your interview is at 3:15, as scheduled"
+            
+            let alert = UIAlertController(title: "Welcome to Astor Job Centre", message:greeting, preferredStyle: UIAlertControllerStyle.actionSheet)
             alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
             
