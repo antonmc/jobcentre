@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "82646C496CABD6B31EB25C72E446EAE1E3B08E20",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "82646C496CABD6B31EB25C72E446EAE1E3B08E20" : 9223372036854775807,
+    "6CCB585858000804BB16202076224C1AB1B84311" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "780AC0E4-D91A-4A39-BC76-F4583D23CB66",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "82646C496CABD6B31EB25C72E446EAE1E3B08E20" : "jobcentre\/",
+    "6CCB585858000804BB16202076224C1AB1B84311" : "iOS-SDK\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "jobcentre",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "phone\/jobcentre.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/Estimote\/iOS-SDK.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "6CCB585858000804BB16202076224C1AB1B84311"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/antonmc\/jobcentre.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "82646C496CABD6B31EB25C72E446EAE1E3B08E20"
+    }
+  ]
+}
